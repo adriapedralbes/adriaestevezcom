@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="bg-blue-50 py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
             Stop Hiring Developers.
             <br />
             Start Launching with AI.
@@ -16,58 +16,62 @@ export default function Hero() {
             like Cursor, Claude, and Grok. Imagine you could build any
             idea you have. No code, no devs, no delays.
           </p>
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+          <div className="space-y-4 mb-8">
+            <div className="flex items-center gap-3">
+              <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
               </svg>
               <span className="text-gray-800">15+ step-by-step video lessons</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            <div className="flex items-center gap-3">
+              <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
               </svg>
               <span className="text-gray-800">Includes proven, ready-to-use prompts</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            <div className="flex items-center gap-3">
+              <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
               </svg>
               <span className="text-gray-800">Zero coding or technical skills required</span>
             </div>
           </div>
-          <div className="mt-8">
-            <a href="#pricing" className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-full inline-flex items-center gap-2 shadow-md">
+          
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <a href="#pricing" className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-8 rounded-full inline-flex items-center justify-center gap-2 shadow-md transition-all">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
               </svg>
               Pre-order now for $247
             </a>
-            <div className="mt-4 text-green-600 font-medium">
+            <div className="bg-green-100 text-green-700 font-medium py-1 px-3 rounded-md inline-block">
               SAVE $50 (17%)
             </div>
-            <div className="mt-2 bg-yellow-50 border border-yellow-200 rounded-lg p-2 inline-block">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"></path>
-                </svg>
-                <span className="text-sm">Early Bird Pricing! This price increases to $297 in 24 sales.</span>
-              </div>
+          </div>
+          
+          <div className="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3 inline-block">
+            <div className="flex items-center gap-2">
+              <span className="text-yellow-700 font-medium">Early Bird Pricing!</span>
+              <span className="text-sm text-gray-700">This price increases to $297 in 24 sales.</span>
             </div>
           </div>
         </div>
+        
         <div className="relative">
-          <div className="rounded-xl shadow-xl overflow-hidden">
-            <Image 
-              src="/code-screenshot.svg" 
-              alt="AI Coding Screenshot" 
-              width={600} 
-              height={400}
-              className="w-full h-auto"
-              priority
-            />
+          <div className="rounded-xl shadow-xl overflow-hidden bg-gradient-to-br from-blue-600 to-purple-500 p-1">
+            <div className="bg-gray-900 rounded-lg overflow-hidden">
+              <Image 
+                src="/code-screenshot.svg" 
+                alt="AI Coding Screenshot" 
+                width={600} 
+                height={400}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
           </div>
-          <div className="absolute bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg max-w-xs">
+          
+          <div className="absolute -bottom-6 right-4 bg-white p-4 rounded-lg shadow-lg max-w-xs">
             <p className="text-sm italic text-gray-700">"...just our first call together was crazy. Rob showed me how to train AI to write my newsletters in 10 minutes. Before this call, I used to spend at least 1 hour per week writing emails. CRAZY! 😮"</p>
             <div className="flex items-center gap-2 mt-2">
               <Image 

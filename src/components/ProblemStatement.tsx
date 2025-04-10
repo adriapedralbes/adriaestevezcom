@@ -1,6 +1,6 @@
 export default function ProblemStatement() {
   return (
-    <section className="py-16 bg-blue-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="bg-white rounded-xl shadow-md p-8 md:p-12">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-900">Got an app idea, but tech keeps getting in the way?</h2>

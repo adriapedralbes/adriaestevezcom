@@ -1,6 +1,6 @@
 export default function Curriculum() {
   return (
-    <section className="py-16 bg-blue-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">

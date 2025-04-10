@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Testimonials() {
   return (
-    <section className="py-16 bg-blue-50" id="testimonials">
+    <section className="py-16 bg-white" id="testimonials">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-2xl font-semibold text-blue-600 uppercase">TESTIMONIALS</h2>
