@@ -46,7 +46,8 @@ services:
       - "traefik.http.routers.nextjs.rule=Host(`adriaestevez.com`) || Host(`www.adriaestevez.com`)"
       - "traefik.http.routers.nextjs.entrypoints=websecure"
       - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
-      - "traefik.http.services.nextjs.loadbalancer.server.port=3000"
+      - "traefik.http.routers.nextjs.service=nextjs-service"
+      - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
       
       # Comunidad subdomain configuration
       - "traefik.http.routers.comunidad.rule=Host(`comunidad.adriaestevez.com`)"
@@ -54,8 +55,7 @@ services:
       - "traefik.http.routers.comunidad.tls.certresolver=letsencrypt"
       - "traefik.http.routers.comunidad.service=comunidad-service"
       - "traefik.http.services.comunidad-service.loadbalancer.server.port=3000"
-      - "traefik.http.middlewares.comunidad-path.addprefix.prefix=/comunidad"
-      - "traefik.http.routers.comunidad.middlewares=comunidad-path,security-headers@file,compress@file"
+      - "traefik.http.routers.comunidad.middlewares=security-headers@file,compress@file"
       
       # Apply middlewares from file provider for main domain
       - "traefik.http.routers.nextjs.middlewares=security-headers@file,compress@file"
