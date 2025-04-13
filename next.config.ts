@@ -62,6 +62,17 @@ const nextConfig: NextConfig = {
   // Este ajuste permite a Next.js manejar correctamente los subdominios
   async rewrites() {
     return [
+      // Rewrite: comunidad.adriaestevez.com/* → /comunidad/*
+      {
+        source: '/:path*',
+        destination: '/comunidad/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'comunidad.adriaestevez.com',
+          },
+        ],
+      },
       // Redirect: comunidad.adriaestevez.com/comunidad* → /
       {
         source: '/comunidad',
