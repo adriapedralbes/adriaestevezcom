@@ -75,21 +75,5 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Redirección de /comunidad y subrutas a la raíz del subdominio
-  async redirects() {
-    return [
-      {
-        source: '/comunidad/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'comunidad.adriaestevez.com',
-          },
-        ],
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
 };
 export default nextConfig;
