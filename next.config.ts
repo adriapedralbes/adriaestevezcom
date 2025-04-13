@@ -73,9 +73,13 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Redirect: comunidad.adriaestevez.com/comunidad* → /
+    ];
+  },
+  // Redirección de /comunidad y subrutas a la raíz del subdominio
+  async redirects() {
+    return [
       {
-        source: '/comunidad',
+        source: '/comunidad/:path*',
         has: [
           {
             type: 'host',
