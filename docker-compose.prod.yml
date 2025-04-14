@@ -40,6 +40,8 @@ services:
       - BEEHIIV_PUB_ID=${BEEHIIV_PUB_ID}
       - NEXT_PUBLIC_BEEHIIV_API_KEY=${NEXT_PUBLIC_BEEHIIV_API_KEY}
       - NEXT_PUBLIC_BEEHIIV_PUB_ID=${NEXT_PUBLIC_BEEHIIV_PUB_ID}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
     labels:
       - "traefik.enable=true"
       # Frontend service - Principal domain
@@ -48,15 +50,7 @@ services:
       - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
       - "traefik.http.routers.nextjs.service=nextjs-service"
       - "traefik.http.services.nextjs-service.loadbalancer.server.port=3000"
-      
-      # Comunidad subdomain configuration
-      - "traefik.http.routers.comunidad.rule=Host(`comunidad.adriaestevez.com`)"
-      - "traefik.http.routers.comunidad.entrypoints=websecure"
-      - "traefik.http.routers.comunidad.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.comunidad.service=comunidad-service"
-      - "traefik.http.services.comunidad-service.loadbalancer.server.port=3000"
-      - "traefik.http.routers.comunidad.middlewares=security-headers@file,compress@file"
-      
+
       # Apply middlewares from file provider for main domain
       - "traefik.http.routers.nextjs.middlewares=security-headers@file,compress@file"
     networks:

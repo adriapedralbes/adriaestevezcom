@@ -1,11 +1,26 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Use environment variables in a real application
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Verificar si estamos en el lado del cliente (browser)
+const isBrowser = typeof window !== 'undefined'
 
-// It's better practice to store these in environment variables (.env.local)
-// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-// const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Una implementación de seguridad para evitar errores durante la compilación SSR
+let supabase: ReturnType<typeof createClient> | null = null
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Inicializar el cliente de Supabase solo en el cliente
+if (isBrowser) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  
+  // Comprobar si las variables están definidas
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error(
+      'Supabase URL or Anon Key missing. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY environment variables.'
+    )
+  } else {
+    // Inicializar el cliente de Supabase
+    supabase = createClient(supabaseUrl, supabaseAnonKey)
+  }
+}
+
+// Exportar un cliente que verifica si está en el cliente o no
+export { supabase }

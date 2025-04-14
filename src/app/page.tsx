@@ -52,6 +52,11 @@ export default function Home() {
     }
 
     try {
+      // Verificar que el cliente está disponible
+      if (!supabase) {
+        throw new Error("No se pudo conectar a la base de datos. Inténtalo de nuevo más tarde.");
+      }
+
       const { error } = await supabase
         .from('subscribers')
         .insert([{ email: email }]);
@@ -134,7 +139,7 @@ export default function Home() {
         <div className="w-full space-y-6 mb-7">
           {/* Card WhatsApp Comunidad */}
           <a
-            href="https://chat.whatsapp.com/LyLxC5zNXeaFPki6XglJBb"
+            href="https://bit.ly/adria-comunidad-gratis"
             target="_blank"
             rel="noopener noreferrer"
             className="block bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#25D36655] hover:border-[#25D366] border-[#C9A880]/70"

@@ -39,7 +39,25 @@ Before starting the deployment, make sure to:
          - "admin:$apr1$qug.ckNS$8HIQIfXX.9ZYJUQbooBc31"
    ```
 
-### 2. Build and Start the Services
+### 2. Set Required Environment Variables
+
+Before building and starting the services, make sure all required environment variables are set:
+
+```bash
+# Variables de entorno requeridas para el despliegue
+# Puedes copiarlas a un archivo .env para que docker-compose las tome automáticamente
+export NEXT_PUBLIC_API_URL=https://api.example.com
+export BEEHIIV_API_KEY=your_beehiiv_api_key
+export BEEHIIV_PUB_ID=your_beehiiv_publication_id
+export NEXT_PUBLIC_BEEHIIV_API_KEY=your_public_beehiiv_api_key
+export NEXT_PUBLIC_BEEHIIV_PUB_ID=your_public_beehiiv_publication_id
+export NEXT_PUBLIC_SUPABASE_URL=your_supabase_url            # ¡Importante! Requerido para el build
+export NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key  # ¡Importante! Requerido para el build
+```
+
+Todas estas variables son necesarias para el correcto funcionamiento de la aplicación, especialmente las de Supabase que son requeridas durante el proceso de build.
+
+### 3. Build and Start the Services
 
 ```bash
 # Construir las imágenes y iniciar los servicios
@@ -100,7 +118,14 @@ If the NextJS application is not working:
 2. Verify that the build process completed successfully
 3. Ensure the application is listening on port 3000 inside the container
 4. Verificar que pnpm se instaló correctamente: `docker exec nextjs pnpm --version`
-5. Si hay problemas con la construcción, puedes modificar el Dockerfile para ajustar el proceso de construcción
+5. Comprobar que todas las variables de entorno requeridas están definidas:
+   ```bash
+   docker exec nextjs env | grep NEXT_PUBLIC
+   ```
+6. Si aparece el error "supabaseUrl is required", asegúrate de que las variables 
+   `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` están definidas en el entorno
+   y se están pasando correctamente al contenedor.
+7. Si hay problemas con la construcción, puedes modificar el Dockerfile para ajustar el proceso de construcción
 
 ## Maintenance
 
