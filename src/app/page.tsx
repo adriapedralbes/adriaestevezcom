@@ -124,14 +124,31 @@ export default function Home() {
         </h1>
         {/* Título */}
         <h2 className="text-lg md:text-xl font-sans text-[#C9A880] mb-5 text-center font-medium tracking-wide">
-          Cofundador, Mentor
+          Cofundador, Mentor & Arquitecto de IA
         </h2>
         {/* Descripción */}
         <p className="font-sans text-lg md:text-xl text-white/90 mb-10 text-center max-w-md leading-relaxed">
-          Ayudo a fundadores a construir más rápido su idea 5x con no-code y automatización.
+          Ayudo a fundadores a construir más rápido su idea con Vibe Coding y Automatizaciones NO-CODE.
         </p>
-        {/* Bloques de contenido ocultos temporalmente
+        {/* Bloques de contenido */}
         <div className="w-full space-y-6 mb-7">
+          {/* Card WhatsApp Comunidad */}
+          <a
+            href="https://chat.whatsapp.com/LyLxC5zNXeaFPki6XglJBb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#25D36655] hover:border-[#25D366] border-[#C9A880]/70"
+            style={{
+              borderImage: "linear-gradient(90deg, #25D366 0%, #C9A880 100%) 1",
+              textDecoration: "none"
+            }}
+          >
+            <h3 className="font-sans font-bold text-[#25D366] mb-1 uppercase tracking-wider text-base">// WHATSAPP_COMUNIDAD</h3>
+            <p className="font-sans text-white/90 text-base mb-2">Únete a mi comunidad de WhatsApp para recibir recursos exclusivos, novedades y conectar con otros fundadores.</p>
+            <span className="inline-block mt-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#C9A880] text-black font-semibold shadow transition-all duration-200 hover:brightness-110">
+              Unirme al grupo
+            </span>
+          </a>
           <div
             className="bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#C9A88055] hover:border-[#C9A880] border-[#C9A880]/70"
             style={{
@@ -161,7 +178,6 @@ export default function Home() {
             <p className="font-sans text-white/90 text-base">Crea tu propio servidor MD</p>
           </div>
         </div>
-        */}
         {/* Formulario de email */}
         <form
           className="w-full"
