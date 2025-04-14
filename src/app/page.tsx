@@ -124,11 +124,11 @@ export default function Home() {
         </h1>
         {/* Título */}
         <h2 className="text-lg md:text-xl font-sans text-[#C9A880] mb-5 text-center font-medium tracking-wide">
-          Cofundador, Mentor & Arquitecto de IA
+          Cofundador, Mentor & Arquitecto IA
         </h2>
         {/* Descripción */}
         <p className="font-sans text-lg md:text-xl text-white/90 mb-10 text-center max-w-md leading-relaxed">
-          Ayudo a fundadores a construir más rápido su idea con Vibe Coding y Automatizaciones NO-CODE.
+          Ahorro +$10.000/mes a empresas con automatizaciones, agentes y sistemas IA.
         </p>
         {/* Bloques de contenido */}
         <div className="w-full space-y-6 mb-7">
@@ -143,12 +143,19 @@ export default function Home() {
               textDecoration: "none"
             }}
           >
-            <h3 className="font-sans font-bold text-[#25D366] mb-1 uppercase tracking-wider text-base">// WHATSAPP_COMUNIDAD</h3>
-            <p className="font-sans text-white/90 text-base mb-2">Únete a mi comunidad de WhatsApp para recibir recursos exclusivos, novedades y conectar con otros fundadores.</p>
+            <div className="flex justify-between items-start mb-1">
+              <h3 className="font-sans font-bold text-[#25D366] uppercase tracking-wider text-base">// WHATSAPP_COMUNIDAD</h3>
+              <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md flex items-center">
+                <span className="mr-1">¡URGENTE!</span>
+                <span className="text-xs">267/500</span>
+              </div>
+            </div>
+            <p className="font-sans text-white/90 text-base mb-2">Únete a mi comunidad de WhatsApp para recibir recursos exclusivos, novedades y conectar con otros fundadores. <span className="text-red-400 font-medium">El grupo se cierra al llegar a 500 miembros.</span></p>
             <span className="inline-block mt-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#C9A880] text-black font-semibold shadow transition-all duration-200 hover:brightness-110">
               Unirme al grupo
             </span>
           </a>
+          {/* Commented out cards as requested
           <div
             className="bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#C9A88055] hover:border-[#C9A880] border-[#C9A880]/70"
             style={{
@@ -177,6 +184,7 @@ export default function Home() {
             <h3 className="font-sans font-bold text-[#C9A880] mb-1 uppercase tracking-wider text-base">// FREE_AI_PROMPTS</h3>
             <p className="font-sans text-white/90 text-base">Crea tu propio servidor MD</p>
           </div>
+          */}
         </div>
         {/* Formulario de email */}
         <form
