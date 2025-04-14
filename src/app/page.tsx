@@ -146,14 +146,15 @@ export default function Home() {
             <div className="flex justify-between items-start mb-1">
               <h3 className="font-sans font-bold text-[#25D366] uppercase tracking-wider text-base">// WHATSAPP_COMUNIDAD</h3>
               <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md flex items-center">
-                <span className="mr-1">¡URGENTE!</span>
                 <span className="text-xs">267/500</span>
               </div>
             </div>
-            <p className="font-sans text-white/90 text-base mb-2">Únete a mi comunidad de WhatsApp para recibir recursos exclusivos, novedades y conectar con otros fundadores. <span className="text-red-400 font-medium">El grupo se cierra al llegar a 500 miembros.</span></p>
-            <span className="inline-block mt-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#C9A880] text-black font-semibold shadow transition-all duration-200 hover:brightness-110">
-              Unirme al grupo
-            </span>
+            <div className="flex justify-between items-center">
+              <p className="font-sans text-white/90 text-base">Únete a mi comunidad de WhatsApp para recibir recursos exclusivos, novedades y conectar con otros fundadores. <span className="text-red-400 font-medium">El grupo se cierra al llegar a 500 miembros.</span></p>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white/70 group-hover:text-[#25D366] transition-colors flex-shrink-0 ml-3">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
+            </div>
           </a>
           {/* Commented out cards as requested
           <div
@@ -185,6 +186,31 @@ export default function Home() {
             <p className="font-sans text-white/90 text-base">Crea tu propio servidor MD</p>
           </div>
           */}
+
+          {/* FuturPrive Card */}
+          <a
+            href="https://futurprive.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#4A90E255] hover:border-[#4A90E2] border-[#C9A880]/70"
+            style={{
+              borderImage: "linear-gradient(90deg, #4A90E2 0%, #C9A880 100%) 1",
+              textDecoration: "none"
+            }}
+          >
+            <div className="flex justify-between items-start mb-1">
+              <h3 className="font-sans font-bold text-[#4A90E2] uppercase tracking-wider text-base">// FUTURPRIVE_AGENCY</h3>
+              <div className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-md flex items-center">
+                <span className="mr-1">NUEVO</span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="font-sans text-white/90 text-base">Agencia especializada en implementación de IA para empresas. Multiplicamos beneficios con soluciones personalizadas.</p>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white/70 group-hover:text-[#4A90E2] transition-colors flex-shrink-0 ml-3">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
+            </div>
+          </a>
         </div>
         {/* Formulario de email */}
         <form
