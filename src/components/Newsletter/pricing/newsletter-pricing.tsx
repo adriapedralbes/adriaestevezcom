@@ -25,7 +25,7 @@ export function NewsletterPricing() {
             tu precio DE POR VIDA
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            Mira, voy a ser CLARO contigo. Los precios aumentarán después de los primeros 30 miembros fundadores, y esto NO es una táctica de marketing.
+            Mira, voy a ser CLARO contigo. Los precios aumentarán después de los primeros 50 miembros fundadores, y esto NO es una táctica de marketing.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export function NewsletterPricing() {
           <div className="w-full lg:w-7/12 bg-[#0c0a08]/80 backdrop-blur-sm rounded-3xl p-8 border border-[#C9A880]/20 shadow-xl overflow-hidden relative">
             {/* Early adopter badge */}
             <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-[#C9A880]/10 border border-[#C9A880]/20 text-[#C9A880]">
-              <span className="text-sm font-medium">Descuento para Early Adopters (SÓLO 30 PLAZAS)</span>
+              <span className="text-sm font-medium">Descuento para Early Adopters (SÓLO 50 PLAZAS)</span>
             </div>
 
             {/* Monthly option */}

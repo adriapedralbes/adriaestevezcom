@@ -7,7 +7,7 @@ import { beehiivService } from "@/services/beehiiv";
 
 // Constantes que coinciden con el componente NewsletterAvatarCircles
 const BASE_SUBSCRIBERS = 13;
-const TOTAL_PLAZAS = 30;
+const TOTAL_PLAZAS = 50;
 
 export function ActivityNotifications() {
   const [notification, setNotification] = useState<string | null>(null);

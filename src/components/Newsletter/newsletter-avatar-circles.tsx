@@ -54,7 +54,7 @@ const BASE_SUSCRIBERS = 13; // Número base de suscriptores
 
 export function NewsletterAvatarCircles({
     className,
-    totalPlazas = 30,
+    totalPlazas = 50,
     avatarsToShow = 6,
 }: NewsletterAvatarCirclesProps) {
     const [visibleAvatars] = useState(avatars.slice(0, avatarsToShow));
