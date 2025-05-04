@@ -10,9 +10,9 @@ export async function POST(request: Request) {
     // Verificar que las credenciales estén configuradas
     if (!BEEHIIV_API_KEY || !BEEHIIV_PUB_ID) {
       return new NextResponse(
-        JSON.stringify({ 
-          success: false, 
-          message: 'Beehiiv API not properly configured. Please check environment variables.' 
+        JSON.stringify({
+          success: false,
+          message: 'Beehiiv API not properly configured. Please check environment variables.'
         }),
         { status: 500 }
       );
@@ -24,9 +24,9 @@ export async function POST(request: Request) {
     // Validar el email (campo obligatorio)
     if (!subscriberData.email) {
       return new NextResponse(
-        JSON.stringify({ 
-          success: false, 
-          message: 'Email is required' 
+        JSON.stringify({
+          success: false,
+          message: 'Email is required'
         }),
         { status: 400 }
       );
@@ -45,64 +45,83 @@ export async function POST(request: Request) {
       }
     );
 
-    // Obtener la respuesta de Beehiiv
-    const responseData = await response.json();
+    // Leer la respuesta como texto primero para manejar errores no JSON
+    const responseText = await response.text();
+    let responseData: any;
 
-    // Si la respuesta no es exitosa, verificar el tipo de error
-    if (!response.ok) {
-      console.error('Error from Beehiiv API:', responseData);
-      
-      // Comprobar si es un error de duplicado (email ya registrado)
-      if (responseData.error && 
-         (responseData.error.includes("already subscribed") || 
-          responseData.error.includes("already exists") ||
-          responseData.code === "existing_subscription")) {
-        
-        console.log('Email ya registrado, consideramos éxito:', subscriberData.email);
-        
-        // Para emails ya registrados, consideramos un éxito y devolvemos respuesta positiva
-        // para que el usuario vea un mensaje de éxito y no se confunda
+    // Intentar parsear como JSON, pero manejar errores si no es JSON válido
+    try {
+      responseData = responseText ? JSON.parse(responseText) : {};
+    } catch (parseError) {
+      console.error('Error parsing Beehiiv response as JSON:', parseError);
+      console.error('Raw Beehiiv response text:', responseText);
+      // Si no se puede parsear y la respuesta no fue OK, devolver un error genérico
+      if (!response.ok) {
         return new NextResponse(
-          JSON.stringify({ 
-            success: true, 
-            alreadySubscribed: true,
-            message: "¡Este email ya estaba registrado! No te preocupes, ya estás en la lista de espera.",
-            data: {
-              email: subscriberData.email,
-              status: "active"
-            }
+          JSON.stringify({
+            success: false,
+            message: `Error ${response.status}: ${response.statusText}. Non-JSON response received.`,
+            rawResponse: responseText // Incluir respuesta cruda para depuración
           }),
-          { status: 200 }
+          { status: response.status }
         );
       }
-      
-      // Para otros tipos de errores, devolver el error normal
+      // Si fue OK pero no se pudo parsear (inesperado), devolver error
+      responseData = { success: false, message: 'Could not parse successful response from Beehiiv.' };
+    }
+
+    // Si la respuesta HTTP no fue exitosa (status >= 400)
+    if (!response.ok) {
+      console.error('Error from Beehiiv API:', responseData);
+      const errorMessage = responseData?.error || responseData?.message || `Error ${response.status}: ${response.statusText}`;
+
+      // Comprobar si es un error de duplicado (email ya registrado)
+      const isDuplicate = errorMessage.includes("already subscribed") ||
+        errorMessage.includes("already exists") ||
+        responseData?.code === "existing_subscription";
+
+      if (isDuplicate) {
+        console.log('Email ya registrado, consideramos éxito:', subscriberData.email);
+        // Devolver éxito para emails ya registrados
+        return new NextResponse(
+          JSON.stringify({
+            success: true,
+            alreadySubscribed: true,
+            message: "¡Este email ya estaba registrado! No te preocupes, ya estás en la lista de espera.",
+            data: { email: subscriberData.email, status: "active" }
+          }),
+          { status: 200 } // Devolver 200 OK aunque ya existiera
+        );
+      }
+
+      // Para otros tipos de errores, devolver el error
       return new NextResponse(
-        JSON.stringify({ 
-          success: false, 
-          message: responseData.error || `Error ${response.status}: ${response.statusText}`,
+        JSON.stringify({
+          success: false,
+          message: errorMessage,
           details: responseData
         }),
         { status: response.status }
       );
     }
 
-    // Devolver la respuesta exitosa
+    // Si la respuesta HTTP fue exitosa (status 2xx)
+    // Devolver la respuesta exitosa (puede ser el objeto de suscripción o el de 'alreadySubscribed' si se manejó arriba)
     return new NextResponse(
-      JSON.stringify({ 
-        success: true, 
-        data: responseData 
+      JSON.stringify({
+        success: true,
+        data: responseData // Contiene los datos de la suscripción creada
       }),
       { status: 200 }
     );
   } catch (error) {
     // Manejar cualquier error inesperado
     console.error('Unexpected error in Beehiiv subscription handler:', error);
-    
+
     return new NextResponse(
-      JSON.stringify({ 
-        success: false, 
-        message: error instanceof Error ? error.message : 'An unexpected error occurred' 
+      JSON.stringify({
+        success: false,
+        message: error instanceof Error ? error.message : 'An unexpected error occurred'
       }),
       { status: 500 }
     );
