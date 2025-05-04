@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 import { Logo } from "@/components/Logo";
@@ -53,9 +52,6 @@ export function NewsletterWaitlist() {
 
       // Redireccionar a la página de agradecimiento
       setIsSuccess(true);
-
-      // Incrementar el contador de suscriptores
-      await beehiivService.incrementCounter();
 
       // Incrementar el contador de envíos para forzar una recarga del componente
       setSubmissionCount(prev => prev + 1);
