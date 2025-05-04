@@ -422,7 +422,7 @@ export function NewsletterCourses() {
               Currículum <span className="text-[#C9A880]">Completo del Curso</span>
             </h4>
             <p className="text-center text-gray-400 mb-8">
-              Los primeros 4 módulos estarán disponibles cuando se lance la comunidad. Módulos adicionales serán
+              Los primeros 6 módulos estarán disponibles cuando se lance la comunidad. Módulos adicionales serán
               publicados próximamente.
             </p>
 

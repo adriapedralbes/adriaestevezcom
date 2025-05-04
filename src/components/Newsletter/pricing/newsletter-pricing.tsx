@@ -45,7 +45,7 @@ export function NewsletterPricing() {
                 <span className="text-lg text-white/70 ml-2">/mes</span>
               </div>
               <div className="flex items-center mb-5">
-                <span className="text-white/60 line-through mr-2">Normalmente 49€</span>
+                <span className="text-white/60 line-through mr-2">Después 49€</span>
                 <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">40% DE DESCUENTAZO</span>
               </div>
             </div>
@@ -65,7 +65,7 @@ export function NewsletterPricing() {
                 <span className="text-lg text-white/70 ml-2">/año</span>
               </div>
               <div className="flex items-center mb-5">
-                <span className="text-white/60 line-through mr-2">Normalmente 348€</span>
+                <span className="text-white/60 line-through mr-2">Después 348€</span>
                 <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">¡50% DE DESCUENTO!</span>
               </div>
             </div>
@@ -134,7 +134,7 @@ export function NewsletterPricing() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-white">Plantillas y recursos para agentes de IA PROFESIONALES</span>
+                <span className="text-white">Plantillas y recursos para Vibe Coding Estructurado y Agentes IA Profesionales</span>
               </li>
             </ul>
 
@@ -142,11 +142,15 @@ export function NewsletterPricing() {
             <div className="space-y-4 mb-8">
               <div className="flex items-start">
                 <span className="h-5 w-5 text-[#C9A880] mt-0.5 mr-3 flex-shrink-0">🎁</span>
-                <span className="text-[#C9A880] font-medium">BONUS - Eventos exclusivos para fundadores</span>
+                <span className="text-[#C9A880] font-medium">BONUS - Sorteos exclusivos</span>
               </div>
               <div className="flex items-start">
                 <span className="h-5 w-5 text-[#C9A880] mt-0.5 mr-3 flex-shrink-0">🎁</span>
-                <span className="text-[#C9A880] font-medium">BONUS - Grupo de networking exclusivo GARANTIZADO</span>
+                <span className="text-[#C9A880] font-medium">BONUS - Bolsa de Trabajo</span>
+              </div>
+              <div className="flex items-start">
+                <span className="h-5 w-5 text-[#C9A880] mt-0.5 mr-3 flex-shrink-0">🎁</span>
+                <span className="text-[#C9A880] font-medium">BONUS - Llamada de bienvenida 1-1 con Adrià Estévez</span>
               </div>
             </div>
 

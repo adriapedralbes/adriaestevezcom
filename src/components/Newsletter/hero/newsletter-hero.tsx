@@ -652,7 +652,7 @@ export function NewsletterHero() {
           </h1>
 
           <p className="text-white/80 max-w-2xl mx-auto mb-10">
-            <span className="text-[#C9A880] font-medium">Conviértete en miembro fundador</span> de nuestra Comunidad de Maestría en IA y bloquea tu precio especial de early adopter ¡para siempre! 🔥
+            <span className="text-[#C9A880] font-medium">Conviértete en miembro fundador</span> de nuestra Comunidad de Arquitectos IA y bloquea tu precio especial de early adopter ¡para siempre! 🔥
 
             <br /><br />
 
