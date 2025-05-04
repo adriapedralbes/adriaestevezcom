@@ -290,12 +290,10 @@ export default function ThankYouPage() {
       {/* Barra de navegación superior */}
       <header className="w-full bg-[#070707] backdrop-blur-md border-b border-white/10 py-5 px-8 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-center md:justify-start">
-          <a href="/comunidad" className="flex items-center space-x-3 group transition-all">
-            <Logo width={40} height={40} className="h-10 w-auto group-hover:scale-105 transition-transform" />
-            <span className="text-white text-xl md:text-2xl font-semibold group-hover:text-white/90 transition-colors">
-              FuturPrive <span className="text-[#C9A880] group-hover:text-[#D9B890] transition-colors">Community</span>
-            </span>
-          </a>
+          <Logo width={40} height={40} className="h-10 w-auto group-hover:scale-105 transition-transform" />
+          <span className="text-white text-xl md:text-2xl font-semibold group-hover:text-white/90 transition-colors">
+            Arquitectos IA <span className="text-[#C9A880] group-hover:text-[#D9B890] transition-colors">Community</span>
+          </span>
         </div>
       </header>
 
@@ -319,7 +317,7 @@ export default function ThankYouPage() {
 
           <p className="mb-4">La mayoría se queda en la superfície, pero tú has decidido ir un paso más allá.</p>
 
-          <p className="mb-4">Te he reservado tu plaza en la Comunidad FuturPrive y <span className="text-[#C9A880] font-semibold">me pondré en contacto contigo en cuanto abramos las puertas.</span></p>
+          <p className="mb-4">Te he reservado tu plaza en la Comunidad de Arquitectos IA y <span className="text-[#C9A880] font-semibold">me pondré en contacto contigo en cuanto abramos las puertas.</span></p>
 
           <p className="mb-6">Mientras tanto, te he preparado este vídeo que deberías ver AHORA MISMO si quieres entender por qué lo que estamos construyendo es tan diferente a todo lo demás.</p>
         </motion.div>
@@ -593,7 +591,7 @@ export default function ThankYouPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-2 text-[#C9A880]">1. Esto NO es para todo el mundo</h3>
                 <p className="text-white/80">
-                  Lo digo en serio. FuturPrive Community no es otra comunidad más. No buscamos a cualquiera. Buscamos a personas que quieren resultados REALES en su patrimonio. Si esperas teorías bonitas que nunca se aplican, hay miles de sitios que te pueden servir. Pero si buscas estrategias COMPROBADAS por gente que maneja patrimonio de verdad... este es tu sitio.
+                  Lo digo en serio. Arquitectos IA no es otra comunidad más. No buscamos a cualquiera. Buscamos a personas que quieren resultados REALES. Si esperas teorías bonitas que nunca se aplican, hay miles de sitios que te pueden servir. Pero si buscas estrategias COMPROBADAS por gente que maneja de verdad... este es tu sitio.
                 </p>
               </div>
 
@@ -614,19 +612,9 @@ export default function ThankYouPage() {
 
             <div className="mt-10 pt-6 border-t border-white/10">
               <p className="italic text-white/70 text-lg">
-                "Construir patrimonio requiere información privilegiada, estrategias diferentes a las de las masas y, sobre todo, un entorno donde compartir con gente que está en tu mismo camino. Eso es exactamente lo que estamos creando."
+                "Construir requiere información privilegiada, estrategias diferentes a las de las masas y, sobre todo, un entorno donde compartir con gente que está en tu mismo camino. Eso es exactamente lo que estamos creando."
               </p>
               <p className="mt-3 text-[#C9A880] font-semibold">- Adrià</p>
-            </div>
-
-            <div className="mt-8 bg-[#1a1a1a] p-5 rounded-lg border border-[#C9A880]/30">
-              <h4 className="font-semibold text-[#C9A880] mb-2">IMPORTANTE: Revisa tu email</h4>
-              <p className="text-white/80 mb-3">
-                Te he enviado un email de confirmación. <strong>Debes hacer clic en el enlace</strong> para asegurar que recibes todas las comunicaciones importantes.
-              </p>
-              <p className="text-white/80">
-                Si no lo ves, revisa la carpeta de spam o promociones. Es un paso pequeño pero crucial para no perderte nada. ¿Vale la pena perder oportunidades por no revisar tu email? Yo creo que no.
-              </p>
             </div>
           </div>
         </motion.div>
