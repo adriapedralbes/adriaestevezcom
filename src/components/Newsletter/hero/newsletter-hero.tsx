@@ -523,10 +523,10 @@ export function NewsletterHero() {
                                 step="0.01"
                                 value={volume}
                                 onChange={handleVolumeChange}
-                                className="absolute inset-0 opacity-0 cursor-pointer w-8 -left-4"
+                                className="absolute inset-0 opacity-0 cursor-pointer w-8 -left-4 rotate-180"
                                 style={{
                                   WebkitAppearance: 'slider-vertical',
-                                  writingMode: 'vertical-rl',
+                                  writingMode: 'vertical-rl'
                                 }}
                               />
                             </div>

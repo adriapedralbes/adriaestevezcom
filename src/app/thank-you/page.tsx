@@ -291,9 +291,11 @@ export default function ThankYouPage() {
       <header className="w-full bg-[#070707] backdrop-blur-md border-b border-white/10 py-5 px-8 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-center md:justify-start">
           <Logo width={40} height={40} className="h-10 w-auto group-hover:scale-105 transition-transform" />
-          <span className="text-white text-xl md:text-2xl font-semibold group-hover:text-white/90 transition-colors">
-            Arquitectos IA <span className="text-[#C9A880] group-hover:text-[#D9B890] transition-colors">Community</span>
-          </span>
+          <a href="/" className="ml-2 group">
+            <span className="text-white text-xl md:text-2xl font-semibold group-hover:text-white/90 transition-colors">
+              Arquitectos IA <span className="text-[#C9A880] group-hover:text-[#D9B890] transition-colors">Community</span>
+            </span>
+          </a>
         </div>
       </header>
 
@@ -350,7 +352,7 @@ export default function ThankYouPage() {
                 console.error("Error en la carga del video:", e);
               }}
             >
-              <source src="/hero-video.mp4" type="video/mp4" />
+              <source src="/bienvenida.mp4" type="video/mp4" />
             </video>
 
             {/* Video Controls - Central play button */}
@@ -482,10 +484,10 @@ export default function ThankYouPage() {
                             step="0.01"
                             value={volume}
                             onChange={handleVolumeChange}
-                            className="absolute inset-0 opacity-0 cursor-pointer w-8 -left-4"
+                            className="absolute inset-0 opacity-0 cursor-pointer w-8 -left-4 rotate-180"
                             style={{
                               WebkitAppearance: 'slider-vertical',
-                              writingMode: 'vertical-rl',
+                              writingMode: 'vertical-rl'
                             }}
                           />
                         </div>

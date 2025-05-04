@@ -8,9 +8,9 @@ import { NewsletterBenefits } from "@/components/Newsletter/benefits/newsletter-
 import { NewsletterCommunity } from "@/components/Newsletter/community/newsletter-community";
 import { NewsletterCourses } from "@/components/Newsletter/courses/newsletter-courses";
 import { NewsletterGifts } from "@/components/Newsletter/gifts/newsletter-gifts";
-import { NewsletterHero } from "@/components/Newsletter/hero/newsletter-hero";
 import { NewsletterPricing } from "@/components/Newsletter/pricing/newsletter-pricing";
 import { NewsletterSkills } from "@/components/Newsletter/skills/newsletter-skills";
+import { NewsletterWaitlist } from "@/components/Newsletter/waitlist/newsletter-waitlist";
 import { MarqueeDemo } from "@/components/testimonials";
 
 export default function ComunidadPage() {
@@ -51,7 +51,7 @@ export default function ComunidadPage() {
     const handleInitialHash = () => {
       // Restaurar scroll normal primero
       document.body.style.overflow = '';
-      
+
       const hash = window.location.hash;
       if (hash) {
         // Dar tiempo a que se renderice todo
@@ -64,7 +64,7 @@ export default function ComunidadPage() {
 
     // Asegurar que al cargar la página, solo se vea la sección hero inicialmente
     document.body.style.overflow = 'hidden';
-    
+
     // Después de un tiempo, restaurar el scroll y manejar hash si existe
     const timer = setTimeout(handleInitialHash, 800);
 
@@ -77,8 +77,8 @@ export default function ComunidadPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section - Nueva estructura con waitlist */}
-      <NewsletterHero />
+      {/* Waitlist Form - First thing visitors see */}
+      <NewsletterWaitlist />
 
       {/* Pricing Section */}
       <div className="relative">
@@ -99,7 +99,7 @@ export default function ComunidadPage() {
 
       {/* Free Gifts Section */}
       <NewsletterGifts />
-      
+
 
 
       {/* Testimonials Marquee */}
@@ -109,7 +109,7 @@ export default function ComunidadPage() {
         </div>
         <MarqueeDemo />
       </section>
-      
+
       {/* Cursos IA Section */}
       <NewsletterCourses />
 
@@ -118,7 +118,7 @@ export default function ComunidadPage() {
 
       {/* Footer */}
       <Footer />
-      
+
       {/* Notificaciones de actividad reciente */}
       <ActivityNotifications />
     </div>
