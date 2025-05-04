@@ -11,14 +11,14 @@ export function NewsletterSkills() {
   const { theme } = useTheme();
 
   const skillTopics = [
-    "Construyendo Agentes de IA Listos para Producción",
     "Arquitectura de Agentes de IA",
+    "Vibe Coding estructurado",
+    "Sistemas IA con MCPs",
     "Expertos en Conocimiento de IA (RAG y Más)",
     "IA Local (IA Segura y Privada)",
     "Casos de Uso de IA en el Mundo Real",
-    "Uso de Asistentes de Programación con IA",
     "Monetización de Agentes de IA",
-    "Construyendo Agentes de IA sin Código",
+    "Agentes A2A",
     "Herramientas y Frameworks de IA"
   ];
 
@@ -63,16 +63,16 @@ export function NewsletterSkills() {
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
             Lo Que <span className="text-[#C9A880]">Aprenderás</span>
           </h2>
-          
+
           <p className="text-gray-400 text-center max-w-3xl mx-auto mb-12">
-            Nuestro currículum NO es teórico. Todo lo que enseñamos es fruto de EXPERIENCIA REAL 
+            Nuestro currículum NO es teórico. Todo lo que enseñamos es fruto de EXPERIENCIA REAL
             y está documentado con RESULTADOS REALES. Aquí no vendemos humo.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {skillTopics.map((skill, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-[#0a0a0a] border border-[#222] hover:border-[#333] rounded-xl p-4 transition-colors duration-300 flex items-center"
               >
                 <div className="mr-3 flex-shrink-0">
@@ -91,7 +91,7 @@ export function NewsletterSkills() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-white">
             Por Qué Estas <span className="bg-gradient-to-r from-[#C9A880] to-[#A78355] bg-clip-text text-transparent">Habilidades Importan</span>
           </h2>
-          
+
           <p className="text-gray-300 text-center max-w-3xl mx-auto mb-12">
             La demanda de experiencia en IA está creciendo rápidamente en TODAS las industrias y quien no se adapte quedará FUERA del mercado.
           </p>
@@ -113,11 +113,11 @@ export function NewsletterSkills() {
                   <p className="text-white mb-4 text-sm md:text-base">
                     {stat.text}
                   </p>
-                  
-                  <a 
-                    href={stat.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+
+                  <a
+                    href={stat.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center text-[#C9A880]/70 text-sm mt-auto hover:text-[#C9A880] transition-colors"
                   >
                     <span>{stat.source}</span>

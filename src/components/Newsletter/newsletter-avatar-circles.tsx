@@ -45,17 +45,17 @@ const avatars = [
 ];
 
 interface NewsletterAvatarCirclesProps {
-  className?: string;
-  totalPlazas?: number;
-  avatarsToShow?: number;
+    className?: string;
+    totalPlazas?: number;
+    avatarsToShow?: number;
 }
 
-const BASE_SUSCRIBERS = 133; // Número base de suscriptores
+const BASE_SUSCRIBERS = 13; // Número base de suscriptores
 
 export function NewsletterAvatarCircles({
-  className,
-  totalPlazas = 200,
-  avatarsToShow = 6,
+    className,
+    totalPlazas = 30,
+    avatarsToShow = 6,
 }: NewsletterAvatarCirclesProps) {
     const [visibleAvatars] = useState(avatars.slice(0, avatarsToShow));
     const [plazasOcupadas, setPlazasOcupadas] = useState(BASE_SUSCRIBERS);
@@ -68,11 +68,11 @@ export function NewsletterAvatarCircles({
                 // Obtener el conteo de nuevos suscriptores
                 const newSubscribers = await beehiivService.getSubscriberCount();
                 console.log("Nuevos suscriptores:", newSubscribers);
-                
-                // Sumar el conteo base (133) más los nuevos suscriptores
+
+                // Sumar el conteo base (13) más los nuevos suscriptores
                 const totalSubscribers = BASE_SUSCRIBERS + newSubscribers;
-                console.log("Total suscriptores (133 + nuevos):", totalSubscribers);
-                
+                console.log("Total suscriptores (13 + nuevos):", totalSubscribers);
+
                 setPlazasOcupadas(totalSubscribers);
             } catch (error) {
                 console.error("Error al obtener el conteo de suscriptores:", error);
@@ -85,20 +85,20 @@ export function NewsletterAvatarCircles({
 
         // Cargar inmediatamente al montar el componente
         fetchSubscriberCount();
-        
+
         // También configuramos un intervalo para actualizar cada 2 minutos
         // para usuarios que mantengan la página abierta mucho tiempo
         const intervalId = setInterval(fetchSubscriberCount, 2 * 60 * 1000);
-        
+
         // Limpieza al desmontar
         return () => clearInterval(intervalId);
     }, []);
 
     // Función para crear avatares con efecto de animación
     const avatarsWithAnimation = () => (
-        <AvatarCircles 
-            numPeople={plazasOcupadas - visibleAvatars.length} 
-            avatarUrls={visibleAvatars} 
+        <AvatarCircles
+            numPeople={plazasOcupadas - visibleAvatars.length}
+            avatarUrls={visibleAvatars}
             className={cn("transform transition-all duration-300 hover:scale-105", className)}
         />
     );
@@ -107,10 +107,10 @@ export function NewsletterAvatarCircles({
         <div className={cn("flex flex-col items-center space-y-3", className)}>
             {/* Avatares con efecto de hover */}
             {avatarsWithAnimation()}
-            
+
             {/* Barra de progreso mejorada */}
             <div className="w-full max-w-sm">
-                <ProgressIndicator 
+                <ProgressIndicator
                     current={plazasOcupadas}
                     total={totalPlazas}
                     variant="waitlist"

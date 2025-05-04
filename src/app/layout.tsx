@@ -7,7 +7,7 @@ import { ClientScrollHandler } from '@/components/client-scroll-handler';
 
 export const metadata: Metadata = {
   title: "Adrià Estévez",
-  description: "AI Arquitect & Software Developer",
+  description: "Comunidad IA y Cursos",
 };
 
 export default function RootLayout({

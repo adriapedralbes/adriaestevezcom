@@ -348,7 +348,7 @@ export const ProfileConfigurationModal: React.FC<ProfileConfigurationModalProps>
               <div className="bg-[#323230] rounded-lg p-4 mb-6">
                 <div className="flex justify-between items-center">
                   <div>
-                    <span className="text-2xl font-bold text-white">20$</span>
+                    <span className="text-2xl font-bold text-white">29€</span>
                     <span className="text-zinc-400 ml-1">/ mes</span>
                   </div>
                   <span className="text-green-400 text-sm font-medium">Cancela cuando quieras</span>

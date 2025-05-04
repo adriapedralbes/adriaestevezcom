@@ -485,28 +485,13 @@ export function NewsletterCourses() {
             />
 
             <FAQItem
-              question="¿Me darás algún certificado cuando termine?"
-              answer="Sí, recibirás un certificado digital por cada curso que completes. Pero seamos sinceros: lo que REALMENTE importa no es el papel, sino los PROYECTOS REALES que construirás durante el curso. Estos proyectos serán tu verdadero portfolio y lo que demostrará que SABES hacer lo que dices que sabes hacer. Un certificado solo dice que completaste algo, tus proyectos demuestran que DOMINAS la materia."
-            />
-
-            <FAQItem
               question="¿Me ayudarás cuando me atasque o tendré que arreglármelas solo?"
               answer="JAMÁS te dejaré abandonado. Odio cuando pago por un curso y luego no hay nadie que responda mis dudas. Por eso he creado un sistema de soporte COMPLETO: tendrás acceso a un foro EXCLUSIVO para miembros donde puedes preguntar lo que sea (y recibir respuestas en 24h máximo), sesiones semanales de Q&A EN VIVO, y la posibilidad de conectar con otros estudiantes que están en tu mismo camino. Nadie se queda atrás."
             />
 
             <FAQItem
-              question="¿Necesito ser un EXPERTO en programación para seguir el curso?"
-              answer="¡NO! Y esto es importante: he diseñado el curso para que CUALQUIERA pueda empezar. Si nunca has programado, podrás seguir el módulo de introducción sin problemas. Eso sí, si ya tienes algo de base, avanzarás más rápido en las partes técnicas. ADEMÁS: incluyo recursos adicionales ESPECÍFICOS para quienes necesiten reforzar estas habilidades. Lo importante es tu ACTITUD, no tu nivel inicial."
-            />
-
-            <FAQItem
-              question="¿Cuánto tiempo tengo que dedicarle CADA SEMANA?"
-              answer="Puedes avanzar a TU RITMO. No hay prisas ni fechas límite. Dicho esto, para sacarle el MÁXIMO JUGO, recomiendo dedicar unas 5-7 horas semanales. He estructurado todo en lecciones CORTAS y DIRECTAS para que puedas aprovechar incluso espacios de 30 minutos. Y lo mejor: tendrás ACCESO DE POR VIDA al contenido, así que puedes revisarlo cuando quieras. No es cuestión de prisa, sino de CONSTANCIA."
-            />
-
-            <FAQItem
               question="¿Y si me apunto y luego veo que NO es lo que esperaba?"
-              answer="Tranquilo. Lo tengo MUY CLARO: si no estás satisfecho, no quiero tu dinero. Por eso ofrezco una garantía COMPLETA de 14 días. Prueba el contenido, explora la comunidad, haz preguntas, y si después de todo eso sientes que no es para ti... te devuelvo TODO tu dinero sin hacer preguntas incómodas. Así de simple. Sin letra pequeña, sin excusas. No quiero que nadie se quede con algo que no le APORTA VALOR."
+              answer="Tranquilo. Lo tengo MUY CLARO: si no estás satisfecho, no quiero tu dinero. Por eso ofrezco una garantía COMPLETA de 5 días. Prueba el contenido, explora la comunidad, haz preguntas, y si después de todo eso sientes que no es para ti... te devuelvo TODO tu dinero sin hacer preguntas incómodas. Así de simple. Sin letra pequeña, sin excusas. No quiero que nadie se quede con algo que no le APORTA VALOR."
             />
 
             <FAQItem
@@ -514,10 +499,6 @@ export function NewsletterCourses() {
               answer="He creado un sistema de soporte MULTICAPA: 1) Acceso a la comunidad privada donde conectarás con otros estudiantes QUE ESTÁN HACIENDO LO MISMO que tú, 2) Sesiones grupales SEMANALES donde resolvemos dudas en directo, 3) La posibilidad de programar sesiones 1-a-1 de mentoría (sí, conmigo), y 4) Soporte técnico garantizado en menos de 24 HORAS para cualquier pregunta o problema. En resumen: NUNCA estarás solo en este viaje."
             />
 
-            <FAQItem
-              question="¿Qué seré capaz de CREAR cuando termine el curso?"
-              answer="Te lo digo sin rodeos: al terminar podrás construir COSAS REALES Y ÚTILES. No teoría, sino productos que generan valor. Desarrollarás agentes IA COMPLETOS que automatizan tareas tediosas, crearás asistentes especializados para TU industria específica, implementarás soluciones de procesamiento de lenguaje natural, y construirás aplicaciones que integren MÚLTIPLES servicios de IA. Y lo mejor: cada módulo incluye proyectos PRÁCTICOS que irán directos a tu portfolio profesional. Esto no es un curso, es un trampolín para tu carrera."
-            />
           </div>
         </div>
 

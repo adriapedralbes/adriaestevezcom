@@ -25,7 +25,7 @@ export function NewsletterPricing() {
             tu precio DE POR VIDA
           </h2>
           <p className="text-lg text-white/80 max-w-3xl mx-auto">
-            Mira, voy a ser CLARO contigo. Los precios aumentarán después de los primeros 200 miembros fundadores, y esto NO es una táctica de marketing.
+            Mira, voy a ser CLARO contigo. Los precios aumentarán después de los primeros 30 miembros fundadores, y esto NO es una táctica de marketing.
           </p>
         </div>
 
@@ -34,19 +34,19 @@ export function NewsletterPricing() {
           <div className="w-full lg:w-7/12 bg-[#0c0a08]/80 backdrop-blur-sm rounded-3xl p-8 border border-[#C9A880]/20 shadow-xl overflow-hidden relative">
             {/* Early adopter badge */}
             <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-[#C9A880]/10 border border-[#C9A880]/20 text-[#C9A880]">
-              <span className="text-sm font-medium">Descuento para Early Adopters (SÓLO 200 PLAZAS)</span>
+              <span className="text-sm font-medium">Descuento para Early Adopters (SÓLO 30 PLAZAS)</span>
             </div>
 
             {/* Monthly option */}
             <div className="p-6 mb-5 bg-[#13110d] rounded-xl border border-[#C9A880]/30 transition-all duration-300 hover:border-[#C9A880]/50">
               <h3 className="text-xl font-bold text-white mb-5">Membresía Mensual</h3>
               <div className="flex items-baseline mb-1">
-                <span className="text-4xl font-bold text-white">$59</span>
+                <span className="text-4xl font-bold text-white">29€</span>
                 <span className="text-lg text-white/70 ml-2">/mes</span>
               </div>
               <div className="flex items-center mb-5">
-                <span className="text-white/60 line-through mr-2">Normalmente $79</span>
-                <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">25% DE DESCUENTAZO</span>
+                <span className="text-white/60 line-through mr-2">Normalmente 49€</span>
+                <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">40% DE DESCUENTAZO</span>
               </div>
             </div>
 
@@ -61,11 +61,11 @@ export function NewsletterPricing() {
 
               <h3 className="text-xl font-bold text-white mb-5">Membresía Anual</h3>
               <div className="flex items-baseline mb-1">
-                <span className="text-4xl font-bold text-white">$475</span>
+                <span className="text-4xl font-bold text-white">174€</span>
                 <span className="text-lg text-white/70 ml-2">/año</span>
               </div>
               <div className="flex items-center mb-5">
-                <span className="text-white/60 line-through mr-2">Normalmente $948</span>
+                <span className="text-white/60 line-through mr-2">Normalmente 348€</span>
                 <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">¡50% DE DESCUENTO!</span>
               </div>
             </div>
