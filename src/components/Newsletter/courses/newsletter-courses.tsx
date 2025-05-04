@@ -32,44 +32,44 @@ const techImages = {
 const courseModules = [
   {
     id: 1,
-    title: "Introducción",
-    description: "Empieza con los fundamentos de los agentes IA y comprende la base del curso.",
+    title: "Vibe Coding Estructurado",
+    description: "Aprende el proceso de Vibe Coding estructurado para construir soluciones IA robustas.",
     available: true,
     icon: <BookOpen />
   },
   {
     id: 2,
-    title: "El Proceso de Agentes IA",
+    title: "Agentes de IA",
     description: "Aprende el proceso de principio a fin para planificar, construir y desplegar agentes IA.",
     available: true,
     icon: <Clock />
   },
   {
     id: 3,
-    title: "Prototipado de Agentes IA con n8n",
-    description: "Prototipa tus agentes IA usando n8n - una plataforma de automatización IA sin código.",
+    title: "Sistemas IA con MCPs",
+    description: "Aprende a construir sistemas IA con MCPs para monetizarlos.",
     available: true,
     icon: <Lightbulb />
   },
   {
     id: 4,
-    title: "Construcción de Agentes IA con Pydantic",
-    description: "Construye un agente IA completo usando Pydantic - un framework robusto para agentes IA en Python.",
+    title: "Crear Clientes MCP",
+    description: "Aprende a crear clientes MCP para interactuar con tus sistemas IA y servidores MCP.",
     available: true,
     icon: <Code />
   },
   {
     id: 5,
-    title: "Aplicación para Agentes IA (Frontend)",
-    description: "Diseña e implementa el frontend para tus aplicaciones de agentes IA y monetiza tus agentes.",
-    available: false,
+    title: "Crear Servidores MCP",
+    description: "Aprende a crear servidores MCP para interactuar con tus sistemas IA y clientes MCP.",
+    available: true,
     icon: <Layout />
   },
   {
     id: 6,
-    title: "Despliegue de Agentes IA",
-    description: "Aprende cómo desplegar tus agentes IA a entornos de producción.",
-    available: false,
+    title: "Langchain y Streamlit",
+    description: "Aprende a usar Langchain y Streamlit para construir aplicaciones IA interactivas.",
+    available: true,
     icon: <Server />
   },
   {
@@ -81,8 +81,8 @@ const courseModules = [
   },
   {
     id: 8,
-    title: "Pruebas de Agentes IA",
-    description: "Aprende estrategias completas de pruebas para agentes IA para garantizar su fiabilidad.",
+    title: "Construcción de Agentes IA con Pydantic",
+    description: "Construye un agente IA completo usando Pydantic - un framework robusto para agentes IA en Python.",
     available: false,
     icon: <TestTube />
   },
@@ -239,7 +239,7 @@ export function NewsletterCourses() {
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto">
             Múltiples cursos exclusivos de IA estarán disponibles como recursos en la comunidad,
-            incluyendo un curso muy completo de Dominio de Agentes IA en desarrollo ahora mismo!
+            incluyendo los cursos completos para converirte en un Arquitecto IA y vender tus sistemas automatizados!
           </p>
         </div>
 
@@ -250,7 +250,7 @@ export function NewsletterCourses() {
               <Clock className="h-10 w-10 text-[#C9A880]" />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Curso de Dominio de Agentes IA <span className="text-[#C9A880]">¡Próximamente!</span>
+              Curso de Arquitectos IA <span className="text-[#C9A880]">¡Próximamente!</span>
             </h3>
             <p className="text-gray-400 max-w-3xl">
               Estoy trabajando en un curso exclusivo que te enseñará todo lo que necesitas saber
