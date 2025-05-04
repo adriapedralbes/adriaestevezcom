@@ -165,15 +165,15 @@ export function NewsletterWaitlist() {
             />
 
             <div className="flex items-start space-x-3 text-left p-3">
-              <div className="relative flex mt-1">
+              <div className="relative flex mt-1" onClick={() => setAccepted(!accepted)}>
                 <input
                   type="checkbox"
                   className="sr-only"
                   id="privacy"
                   checked={accepted}
-                  onChange={() => setAccepted(!accepted)}
+                  onChange={() => { }}
                 />
-                <div className={`w-5 h-5 rounded border transition-all duration-300 ${accepted ? 'bg-[#C9A880] border-[#C9A880]' : 'border-[#C9A880]/40 bg-black/30'} flex items-center justify-center`}>
+                <div className={`w-5 h-5 rounded border transition-all duration-300 ${accepted ? 'bg-[#C9A880] border-[#C9A880]' : 'border-[#C9A880]/40 bg-black/30'} flex items-center justify-center cursor-pointer`}>
                   {accepted && (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-black" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -181,7 +181,11 @@ export function NewsletterWaitlist() {
                   )}
                 </div>
               </div>
-              <label htmlFor="privacy" className="text-sm text-white/70 cursor-pointer">
+              <label
+                htmlFor="privacy"
+                className="text-sm text-white/70 cursor-pointer"
+                onClick={() => setAccepted(!accepted)}
+              >
                 Acepto la <Link href="/privacy" className="text-[#C9A880] hover:underline">política de privacidad</Link> y recibir comunicaciones sobre la comunidad. Puedes darte de baja en cualquier momento.
               </label>
             </div>
