@@ -47,15 +47,9 @@ Before building and starting the services, make sure all required environment va
 # Variables de entorno requeridas para el despliegue
 # Puedes copiarlas a un archivo .env para que docker-compose las tome automáticamente
 export NEXT_PUBLIC_API_URL=https://api.example.com
-export BEEHIIV_API_KEY=your_beehiiv_api_key
-export BEEHIIV_PUB_ID=your_beehiiv_publication_id
-export NEXT_PUBLIC_BEEHIIV_API_KEY=your_public_beehiiv_api_key
-export NEXT_PUBLIC_BEEHIIV_PUB_ID=your_public_beehiiv_publication_id
-export NEXT_PUBLIC_SUPABASE_URL=your_supabase_url            # ¡Importante! Requerido para el build
-export NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key  # ¡Importante! Requerido para el build
 ```
 
-Todas estas variables son necesarias para el correcto funcionamiento de la aplicación, especialmente las de Supabase que son requeridas durante el proceso de build.
+Todas estas variables son necesarias para el correcto funcionamiento de la aplicación, son requeridas durante el proceso de build.
 
 ### 3. Build and Start the Services
 
@@ -122,7 +116,7 @@ If the NextJS application is not working:
    ```bash
    docker exec nextjs env | grep NEXT_PUBLIC
    ```
-6. Si aparece el error "supabaseUrl is required", asegúrate de que las variables 
+6. Si aparece el error "supabaseUrl is required", asegúrate de que las variables
    `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` están definidas en el entorno
    y se están pasando correctamente al contenedor.
 7. Si hay problemas con la construcción, puedes modificar el Dockerfile para ajustar el proceso de construcción
