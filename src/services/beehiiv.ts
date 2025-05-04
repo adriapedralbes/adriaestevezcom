@@ -27,7 +27,7 @@ export const beehiivService: BeehiivService = {
   _cachedCount: 0 as number,
   _lastFetchTime: 0 as number,
   _CACHE_DURATION: 2 * 60 * 1000, // 2 minutos de caché
-  
+
   /**
    * Crear un nuevo suscriptor en Beehiiv a través de nuestra API Route
    */
@@ -45,29 +45,26 @@ export const beehiivService: BeehiivService = {
       // Obtenemos la respuesta como texto primero para poder analizarla adecuadamente
       const responseText = await response.text();
       let responseData;
-      
+
       try {
         responseData = JSON.parse(responseText);
       } catch (e) {
         console.error('Error analizando respuesta JSON:', e);
         responseData = { success: false, message: 'Error analizando respuesta' };
       }
-      
+
       if (!response.ok && !responseData.success) {
         // Si la respuesta no es exitosa y no es un caso especial tratado como éxito
         const errorMessage = responseData?.message || `Error ${response.status}: ${response.statusText}`;
         throw new Error(errorMessage);
       }
-      
+
       // Solo incrementamos el contador si es un registro nuevo
       // y no si ya estaba registrado previamente
       if (responseData.success && !responseData.alreadySubscribed) {
-        console.log('Email nuevo registrado, incrementando contador...');
         await beehiivService.incrementCounter();
-      } else if (responseData.alreadySubscribed) {
-        console.log('Email ya registrado, no incrementamos el contador');
       }
-      
+
       return responseData;
     } catch (error) {
       console.error('Error en beehiiv.createSubscription:', error);
@@ -93,32 +90,30 @@ export const beehiivService: BeehiivService = {
       }
 
       const data = await response.json();
-      
+
       // Actualizar caché
       beehiivService._cachedCount = data.count;
       beehiivService._lastFetchTime = Date.now();
-      
+
       return data.count;
     } catch (error) {
       console.error('Error al incrementar contador:', error);
       return 0;
     }
   },
-  
+
   /**
    * Obtener el conteo total de suscriptores activos
    */
   getSubscriberCount: async (): Promise<number> => {
     const now = Date.now();
-    
+
     // Si tenemos un conteo en caché y no ha expirado, lo devolvemos
     if (beehiivService._cachedCount > 0 && now - beehiivService._lastFetchTime < beehiivService._CACHE_DURATION) {
-      console.log('Devolviendo conteo en caché:', beehiivService._cachedCount);
       return beehiivService._cachedCount;
     }
-    
+
     try {
-      console.log('Obteniendo conteo fresco desde la API...');
       // Usamos fetch para llamar a nuestra API Route con un timestamp para evitar caché
       const response = await fetch('/api/newsletter/beehiiv-count?' + new Date().getTime(), {
         method: 'GET',
@@ -136,12 +131,11 @@ export const beehiivService: BeehiivService = {
 
       const data = await response.json();
       const count = data.count || 0;
-      
+
       // Actualizar la caché
       beehiivService._cachedCount = count;
       beehiivService._lastFetchTime = now;
-      
-      console.log('Nuevo conteo obtenido y guardado en caché:', count);
+
       return count;
     } catch (error) {
       console.error('Error en beehiiv.getSubscriberCount:', error);

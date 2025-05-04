@@ -67,11 +67,9 @@ export function NewsletterAvatarCircles({
                 setIsLoading(true);
                 // Obtener el conteo de nuevos suscriptores
                 const newSubscribers = await beehiivService.getSubscriberCount();
-                console.log("Nuevos suscriptores:", newSubscribers);
 
                 // Sumar el conteo base (13) más los nuevos suscriptores
                 const totalSubscribers = BASE_SUSCRIBERS + newSubscribers;
-                console.log("Total suscriptores (13 + nuevos):", totalSubscribers);
 
                 setPlazasOcupadas(totalSubscribers);
             } catch (error) {

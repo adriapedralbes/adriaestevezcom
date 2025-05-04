@@ -81,7 +81,6 @@ export async function POST(request: Request) {
         responseData?.code === "existing_subscription";
 
       if (isDuplicate) {
-        console.log('Email ya registrado, consideramos éxito:', subscriberData.email);
         // Devolver éxito para emails ya registrados
         return new NextResponse(
           JSON.stringify({
