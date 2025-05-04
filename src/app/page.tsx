@@ -1,268 +1,126 @@
 "use client";
 
-import Image from "next/image";
-import { useState, FormEvent, useEffect } from "react"; // Añadido useEffect
-import { supabase } from "@/lib/supabaseClient";
-import Confetti from 'react-confetti'; // Importar Confetti
+import { useEffect } from "react";
 
-// Hook de ayuda para obtener las dimensiones de la ventana de forma segura en el cliente
-function useWindowSize() {
-  const [windowSize, setWindowSize] = useState({
-    width: 0,
-    height: 0,
-  });
+import { Footer } from "@/components/footer-component";
+import { ActivityNotifications } from "@/components/Newsletter/activity-notifications";
+import { NewsletterBenefits } from "@/components/Newsletter/benefits/newsletter-benefits";
+import { NewsletterCommunity } from "@/components/Newsletter/community/newsletter-community";
+import { NewsletterCourses } from "@/components/Newsletter/courses/newsletter-courses";
+import { NewsletterGifts } from "@/components/Newsletter/gifts/newsletter-gifts";
+import { NewsletterHero } from "@/components/Newsletter/hero/newsletter-hero";
+import { NewsletterPricing } from "@/components/Newsletter/pricing/newsletter-pricing";
+import { NewsletterSkills } from "@/components/Newsletter/skills/newsletter-skills";
+import { MarqueeDemo } from "@/components/testimonials";
 
+export default function ComunidadPage() {
+  // Implementar scroll suave para los enlaces de anclaje y manejar hash en URL
   useEffect(() => {
-    function handleResize() {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-    // Establecer tamaño inicialmente al montar en cliente
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    // Limpiar listener al desmontar el componente
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Array de dependencias vacío asegura que solo se ejecute al montar y desmontar
-
-  return windowSize;
-}
-
-export default function Home() {
-  const [email, setEmail] = useState("");
-  const [focus, setFocus] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [showConfetti, setShowConfetti] = useState(false); // Estado para confetti
-  const { width, height } = useWindowSize(); // Obtener dimensiones de la ventana
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsLoading(true);
-    setSuccessMessage("");
-    setErrorMessage("");
-    setShowConfetti(false); // Reiniciar confetti
-
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      setErrorMessage("Por favor, introduce un email válido.");
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      // Verificar que el cliente está disponible
-      if (!supabase) {
-        throw new Error("No se pudo conectar a la base de datos. Inténtalo de nuevo más tarde.");
+    // Función para hacer scroll a un elemento
+    const scrollToElement = (elementId: string) => {
+      const element = document.getElementById(elementId);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const absoluteTop = rect.top + window.scrollY;
+        window.scrollTo({
+          top: absoluteTop - 100, // Offset para que no quede pegado al borde superior
+          behavior: 'smooth'
+        });
       }
+    };
 
-      const { error } = await supabase
-        .from('subscribers')
-        .insert([{ email: email }]);
+    // Manejar clics en enlaces de anclaje
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
 
-      if (error) {
-        if (error.code === '23505') {
-          setErrorMessage("Este email ya está registrado.");
-        } else {
-          throw error;
+      if (anchor && anchor.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const targetId = anchor.getAttribute('href')?.replace('#', '');
+        if (targetId) {
+          scrollToElement(targetId);
+          // Actualizar URL sin recargar
+          history.pushState(null, '', `#${targetId}`);
         }
-      } else {
-        setSuccessMessage("¡Gracias por suscribirte! Revisa tu email.");
-        setEmail("");
-        setShowConfetti(true); // Lanzar confetti al éxito
-        // Opcional: Ocultar confetti después de un tiempo
-        setTimeout(() => setShowConfetti(false), 5000); // Ocultar tras 5 segundos
       }
-    } catch (error) {
-      console.error("Error al enviar el email:", error);
-      setErrorMessage("Error al registrar el email. Inténtalo de nuevo.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
+    // Manejar hash en URL al cargar
+    const handleInitialHash = () => {
+      // Restaurar scroll normal primero
+      document.body.style.overflow = '';
+      
+      const hash = window.location.hash;
+      if (hash) {
+        // Dar tiempo a que se renderice todo
+        setTimeout(() => {
+          const targetId = hash.replace('#', '');
+          scrollToElement(targetId);
+        }, 500);
+      }
+    };
+
+    // Asegurar que al cargar la página, solo se vea la sección hero inicialmente
+    document.body.style.overflow = 'hidden';
+    
+    // Después de un tiempo, restaurar el scroll y manejar hash si existe
+    const timer = setTimeout(handleInitialHash, 800);
+
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+      document.body.style.overflow = '';
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
-    <div className="min-h-screen bg-black relative flex flex-col items-center justify-center py-16 px-4 overflow-x-hidden">
-      {/* Renderizar Confetti condicionalmente */}
-      {showConfetti && width > 0 && height > 0 && (
-        <Confetti
-          width={width}
-          height={height}
-          recycle={false} // Fijar a false para parar tras la animación
-          numberOfPieces={200} // Ajustar número de piezas
-          gravity={0.1} // Ajustar gravedad
-          initialVelocityY={15}
-          tweenDuration={5000} // Coincidir con la duración del timeout
-          colors={['#C9A880', '#A78355', '#FFFFFF', '#F0F0F0']} // Colores dorado y blanco
-          style={{ zIndex: 1000 }} // Asegurar que está por encima
-          onConfettiComplete={() => setShowConfetti(false)} // Ocultar al terminar la animación
-        />
-      )}
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section - Nueva estructura con waitlist */}
+      <NewsletterHero />
 
-      {/* Gradiente de fondo */}
-      <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center">
-        <div className="w-[700px] h-[700px] rounded-full bg-gradient-radial from-[#C9A880]/20 via-transparent to-transparent blur-[120px]" />
+      {/* Pricing Section */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-[#080604] z-0"></div>
+        <NewsletterPricing />
       </div>
-      <main className="relative z-10 w-full max-w-lg flex flex-col items-center">
-        {/* Imagen de perfil */}
-        <div className="mb-8 relative group">
-          <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:shadow-[0_0_32px_4px_#C9A88099] transition-all duration-300"
-            style={{
-              background: "linear-gradient(135deg, #C9A880 0%, #A78355 100%)",
-              padding: 4,
-              zIndex: 1,
-            }}
-          />
-          <Image
-            src="/adria.jpg"
-            alt="Adrià Estévez"
-            width={160}
-            height={160}
-            className="rounded-full border-4 border-black shadow-lg relative z-10"
-            priority
-          />
-        </div>
-        {/* Nombre */}
-        <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#C9A880] mb-2 text-center tracking-tight drop-shadow-[0_2px_8px_rgba(201,168,128,0.15)]">
-          Adrià Estévez
-        </h1>
-        {/* Título */}
-        <h2 className="text-lg md:text-xl font-sans text-[#C9A880] mb-5 text-center font-medium tracking-wide">
-          Cofundador, Mentor & Arquitecto IA
-        </h2>
-        {/* Descripción */}
-        <p className="font-sans text-lg md:text-xl text-white/90 mb-10 text-center max-w-md leading-relaxed">
-          Ahorro +$10.000/mes a empresas con automatizaciones, agentes y sistemas IA.
-        </p>
-        {/* Bloques de contenido */}
-        <div className="w-full space-y-6 mb-7">
-          {/* Card WhatsApp Comunidad */}
-          <a
-            href="https://bit.ly/adria-comunidad-gratis"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#25D36655] hover:border-[#25D366] border-[#C9A880]/70"
-            style={{
-              borderImage: "linear-gradient(90deg, #25D366 0%, #C9A880 100%) 1",
-              textDecoration: "none"
-            }}
-          >
-            <div className="flex justify-between items-start mb-1">
-              <h3 className="font-sans font-bold text-[#25D366] uppercase tracking-wider text-base">// WHATSAPP_COMUNIDAD</h3>
-              <div className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-md flex items-center">
-                <span className="text-xs">267/500</span>
-              </div>
-            </div>
-            <div className="flex justify-between items-center">
-              <p className="font-sans text-white/90 text-base">Únete a mi comunidad de WhatsApp para recibir recursos exclusivos, novedades y conectar con otros fundadores. <span className="text-red-400 font-medium">El grupo se cierra al llegar a 500 miembros.</span></p>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white/70 group-hover:text-[#25D366] transition-colors flex-shrink-0 ml-3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </div>
-          </a>
-          {/* Commented out cards as requested
-          <div
-            className="bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#C9A88055] hover:border-[#C9A880] border-[#C9A880]/70"
-            style={{
-              borderImage: "linear-gradient(90deg, #C9A880 0%, #A78355 100%) 1",
-            }}
-          >
-            <h3 className="font-sans font-bold text-[#C9A880] mb-1 uppercase tracking-wider text-base">// JOIN_ZECONOMY</h3>
-            <p className="font-sans text-white/90 text-base">Comunidad gratuita de AI Builders</p>
-          </div>
-          <div
-            className="bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#C9A88055] hover:border-[#C9A880] border-[#C9A880]/70"
-            style={{
-              borderImage: "linear-gradient(90deg, #C9A880 0%, #A78355 100%) 1",
-            }}
-          >
-            <h3 className="font-sans font-bold text-[#C9A880] mb-1 uppercase tracking-wider text-base">// NEED_HELP?</h3>
-            <p className="font-sans text-white/90 text-base">Guía de IA para programadores</p>
-            <p className="font-sans text-white/90 text-base">Sesión de desbloqueo IA (30 min)</p>
-          </div>
-          <div
-            className="bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#C9A88055] hover:border-[#C9A880] border-[#C9A880]/70"
-            style={{
-              borderImage: "linear-gradient(90deg, #C9A880 0%, #A78355 100%) 1",
-            }}
-          >
-            <h3 className="font-sans font-bold text-[#C9A880] mb-1 uppercase tracking-wider text-base">// FREE_AI_PROMPTS</h3>
-            <p className="font-sans text-white/90 text-base">Crea tu propio servidor MD</p>
-          </div>
-          */}
 
-          {/* FuturPrive Card */}
-          <a
-            href="https://futurprive.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block bg-black border-2 rounded-2xl p-5 transition-all duration-300 group hover:shadow-[0_0_24px_0_#4A90E255] hover:border-[#4A90E2] border-[#C9A880]/70"
-            style={{
-              borderImage: "linear-gradient(90deg, #4A90E2 0%, #C9A880 100%) 1",
-              textDecoration: "none"
-            }}
-          >
-            <div className="flex justify-between items-start mb-1">
-              <h3 className="font-sans font-bold text-[#4A90E2] uppercase tracking-wider text-base">// FUTURPRIVE_AGENCY</h3>
-              <div className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-md flex items-center">
-                <span className="mr-1">NUEVO</span>
-              </div>
-            </div>
-            <div className="flex justify-between items-center">
-              <p className="font-sans text-white/90 text-base">Agencia especializada en implementación de IA para empresas. Multiplicamos beneficios con soluciones personalizadas.</p>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white/70 group-hover:text-[#4A90E2] transition-colors flex-shrink-0 ml-3">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </div>
-          </a>
+      {/* Benefits Section */}
+      <section id="benefits" className="mt-0 bg-[#0a0a0a]">
+        <NewsletterBenefits />
+      </section>
+
+      {/* Community Section */}
+      <NewsletterCommunity />
+
+      {/* Skills Section */}
+      <NewsletterSkills />
+
+      {/* Free Gifts Section */}
+      <NewsletterGifts />
+      
+
+
+      {/* Testimonials Marquee */}
+      <section className="relative w-full overflow-hidden bg-[#0a0a0a] pt-4 pb-16">
+        <div className="absolute inset-0 flex items-center justify-center -z-10">
+          <div className="h-full w-full bg-gradient-to-r from-[#C9A880]/20 to-[#C9A880]/10 blur-[120px]" />
         </div>
-        {/* Formulario de email */}
-        <form
-          className="w-full"
-          onSubmit={handleSubmit}
-        >
-          <div
-            className={`w-full bg-black border-2 rounded-2xl flex items-center px-4 py-2 transition-all duration-300 mb-2
-              ${focus ? "border-[#C9A880] shadow-[0_0_16px_0_#C9A88055]" : "border-[#C9A880]/70"}
-            `}
-            style={{
-              borderImage: "linear-gradient(90deg, #C9A880 0%, #A78355 100%) 1",
-            }}
-          >
-            <svg className="w-6 h-6 text-[#C9A880] mr-2 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <input
-              type="email"
-              placeholder="tu@email.com"
-              className="flex-1 bg-transparent outline-none border-none text-white placeholder:text-white/70 text-base px-2 py-3"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
-              required
-              disabled={isLoading}
-            />
-            <button
-              type="submit"
-              className="ml-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#C9A880] to-[#A78355] text-black font-semibold shadow transition-all duration-200 hover:brightness-110 focus:outline-none disabled:opacity-70 disabled:cursor-not-allowed"
-              aria-label="Enviar email"
-              disabled={isLoading}
-            >
-              {isLoading ? "Enviando..." : "Enviar"}
-            </button>
-          </div>
-          {/* Mensajes de feedback */}
-          <div className="h-5 text-left w-full pl-2 mt-1">
-            {successMessage && <p className="text-sm text-green-400">{successMessage}</p>}
-            {errorMessage && <p className="text-sm text-red-400">{errorMessage}</p>}
-            {!successMessage && !errorMessage && (
-              <span className="text-xs text-[#C9A880]/80">Recibe recursos exclusivos y novedades.</span>
-            )}
-          </div>
-        </form>
-      </main >
-    </div >
+        <MarqueeDemo />
+      </section>
+      
+      {/* Cursos IA Section */}
+      <NewsletterCourses />
+
+      {/* Spacer */}
+      <div className="h-16 bg-[#0a0a0a]"></div>
+
+      {/* Footer */}
+      <Footer />
+      
+      {/* Notificaciones de actividad reciente */}
+      <ActivityNotifications />
+    </div>
   );
 }
