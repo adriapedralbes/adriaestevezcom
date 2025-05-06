@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 
 import { Footer } from "@/components/footer-component";
-import { ActivityNotifications } from "@/components/Newsletter/activity-notifications";
 import { NewsletterBenefits } from "@/components/Newsletter/benefits/newsletter-benefits";
 import { NewsletterCommunity } from "@/components/Newsletter/community/newsletter-community";
 import { NewsletterCourses } from "@/components/Newsletter/courses/newsletter-courses";
@@ -118,9 +117,6 @@ export default function ComunidadPage() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Notificaciones de actividad reciente */}
-      <ActivityNotifications />
     </div>
   );
 }

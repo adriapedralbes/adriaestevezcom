@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import { AvatarCircles } from "@/components/magicui/avatar-circles";
-import { ProgressIndicator } from "@/components/Newsletter/progress-indicator";
 import { cn } from "@/lib/utils";
 import { beehiivService } from "@/services/beehiiv";
 
@@ -95,28 +94,16 @@ export function NewsletterAvatarCircles({
     // Función para crear avatares con efecto de animación
     const avatarsWithAnimation = () => (
         <AvatarCircles
-            numPeople={plazasOcupadas - visibleAvatars.length}
+            numPeople={99}
             avatarUrls={visibleAvatars}
             className={cn("transform transition-all duration-300 hover:scale-105", className)}
         />
     );
 
     return (
-        <div className={cn("flex flex-col items-center space-y-3", className)}>
+        <div className={cn("flex flex-col items-center", className)}>
             {/* Avatares con efecto de hover */}
             {avatarsWithAnimation()}
-
-            {/* Barra de progreso mejorada */}
-            <div className="w-full max-w-sm">
-                <ProgressIndicator
-                    current={plazasOcupadas}
-                    total={totalPlazas}
-                    variant="waitlist"
-                    size="md"
-                    showAnimation={true}
-                    labelPosition="sides"
-                />
-            </div>
         </div>
     );
 }
