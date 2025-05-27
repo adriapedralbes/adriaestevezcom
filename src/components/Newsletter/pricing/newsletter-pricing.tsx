@@ -1,10 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import React from "react";
 
 import { RainbowButtonDemo } from "@/components/rainbowButton";
-import { SmoothScrollLink } from "@/components/SmoothScroll";
 
 export function NewsletterPricing() {
   return (
@@ -41,11 +39,11 @@ export function NewsletterPricing() {
             <div className="p-6 mb-5 bg-[#13110d] rounded-xl border border-[#C9A880]/30 transition-all duration-300 hover:border-[#C9A880]/50">
               <h3 className="text-xl font-bold text-white mb-5">Membresía Mensual</h3>
               <div className="flex items-baseline mb-1">
-                <span className="text-4xl font-bold text-white">29€</span>
+                <span className="text-4xl font-bold text-white">$39</span>
                 <span className="text-lg text-white/70 ml-2">/mes</span>
               </div>
               <div className="flex items-center mb-5">
-                <span className="text-white/60 line-through mr-2">Después 49€</span>
+                <span className="text-white/60 line-through mr-2">Después $65</span>
                 <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">40% DE DESCUENTAZO</span>
               </div>
             </div>
@@ -61,11 +59,11 @@ export function NewsletterPricing() {
 
               <h3 className="text-xl font-bold text-white mb-5">Membresía Anual</h3>
               <div className="flex items-baseline mb-1">
-                <span className="text-4xl font-bold text-white">174€</span>
+                <span className="text-4xl font-bold text-white">$234</span>
                 <span className="text-lg text-white/70 ml-2">/año</span>
               </div>
               <div className="flex items-center mb-5">
-                <span className="text-white/60 line-through mr-2">Después 348€</span>
+                <span className="text-white/60 line-through mr-2">Después $468</span>
                 <span className="bg-[#C9A880]/20 text-[#C9A880] px-2 py-1 rounded text-sm font-medium">¡50% DE DESCUENTO!</span>
               </div>
             </div>
@@ -119,7 +117,7 @@ export function NewsletterPricing() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-white">Acceso a la comunidad privada DE ÉLITE</span>
+                <span className="text-white">Acceso a la comunidad privada</span>
               </li>
               <li className="flex items-start">
                 <svg
@@ -155,16 +153,16 @@ export function NewsletterPricing() {
             </div>
 
             {/* CTA Button */}
-            <SmoothScrollLink href="#newsletter-form">
+            <a href="https://www.skool.com/arquitectos-ia-5565" target="_blank" rel="noopener noreferrer">
               <RainbowButtonDemo className="w-full py-4 text-lg font-medium">
                 <span className="flex items-center justify-center">
-                  <span className="text-xs sm:text-sm md:text-base">DEBES RESERVAR TU PLAZA YA</span>
+                  <span className="text-xs sm:text-sm md:text-base">ÚNETE A LA COMUNIDAD AHORA</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </span>
               </RainbowButtonDemo>
-            </SmoothScrollLink>
+            </a>
           </div>
         </div>
       </div>

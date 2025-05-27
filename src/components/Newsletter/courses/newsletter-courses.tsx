@@ -5,7 +5,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import { MagicCard } from "@/components/magicui/magic-card";
-import { SmoothScrollLink } from "@/components/SmoothScroll";
 
 
 // Tecnologías con sus rutas de imágenes
@@ -254,14 +253,14 @@ export function NewsletterCourses() {
             </h3>
             <p className="text-gray-400 max-w-3xl">
               Estoy trabajando en un curso exclusivo que te enseñará todo lo que necesitas saber
-              sobre planificación, construcción y despliegue de agentes IA. Los primeros módulos principales estarán
-              disponibles cuando se abra la comunidad, ¡así que únete a la lista de espera para ser el primero en obtener acceso!
+              sobre planificación, construcción y despliegue de agentes IA. Los primeros módulos principales ya están
+              disponibles en la comunidad, ¡así que únete ahora para empezar a aprender!
             </p>
-            <SmoothScrollLink href="#newsletter-form">
+            <a href="https://www.skool.com/arquitectos-ia-5565" target="_blank" rel="noopener noreferrer">
               <button className="mt-8 px-6 py-3 bg-black border border-[#C9A880]/50 hover:border-[#C9A880] text-white rounded-full font-medium transition-all duration-300">
-                Unirse a la Lista de Espera →
+                Únete a la Comunidad →
               </button>
-            </SmoothScrollLink>
+            </a>
           </div>
 
           {/* Herramientas y frameworks */}
